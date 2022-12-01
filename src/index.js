@@ -1,12 +1,16 @@
 // Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: '',
-  authDomain: '',
-  projectId: '',
-  storageBucket: '',
-  messagingSenderId: '',
-  appId: '',
+const firebaseConfig = {
+  apiKey: "AIzaSyBcb325Ai5tA0clt3AQqvgiLRD3aA05dsw",
+  authDomain: "fir-test-704dd.firebaseapp.com",
+  projectId: "fir-test-704dd",
+  storageBucket: "fir-test-704dd.appspot.com",
+  messagingSenderId: "31101216629",
+  appId: "1:31101216629:web:95266eef4b1d8e5227153c",
 };
+
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Initialize variables
@@ -16,15 +20,15 @@ const database = firebase.database();
 // Set up our register function
 function register() {
   // Get all our input fields
-  email = document.getElementById('email').value;
-  password = document.getElementById('password').value;
-  full_name = document.getElementById('full_name').value;
-  favourite_song = document.getElementById('favourite_song').value;
-  milk_before_cereal = document.getElementById('milk_before_cereal').value;
+  email = document.getElementById("email").value;
+  password = document.getElementById("password").value;
+  full_name = document.getElementById("full_name").value;
+  favourite_song = document.getElementById("favourite_song").value;
+  milk_before_cereal = document.getElementById("milk_before_cereal").value;
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Email or Password is Outta Line!!');
+    alert("Email or Password is Outta Line!!");
     return;
     // Don't continue running the code
   }
@@ -33,7 +37,7 @@ function register() {
     validate_field(favourite_song) == false ||
     validate_field(milk_before_cereal) == false
   ) {
-    alert('One or More Extra Fields is Outta Line!!');
+    alert("One or More Extra Fields is Outta Line!!");
     return;
   }
 
@@ -57,10 +61,10 @@ function register() {
       };
 
       // Push to Firebase Database
-      database_ref.child('users/' + user.uid).set(user_data);
+      database_ref.child("users/" + user.uid).set(user_data);
 
       // DOne
-      alert('User Created!!');
+      alert("User Created!!");
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
@@ -74,12 +78,12 @@ function register() {
 // Set up our login function
 function login() {
   // Get all our input fields
-  email = document.getElementById('email').value;
-  password = document.getElementById('password').value;
+  email = document.getElementById("email").value;
+  password = document.getElementById("password").value;
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Email or Password is Outta Line!!');
+    alert("Email or Password is Outta Line!!");
     return;
     // Don't continue running the code
   }
@@ -99,10 +103,10 @@ function login() {
       };
 
       // Push to Firebase Database
-      database_ref.child('users/' + user.uid).update(user_data);
+      database_ref.child("users/" + user.uid).update(user_data);
 
       // DOne
-      alert('User Logged In!!');
+      alert("User Logged In!!");
     })
     .catch(function (error) {
       // Firebase will use this to alert of its errors
